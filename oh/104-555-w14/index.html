@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a1a1a">
+<meta name="robots" content="noindex">
+<title>Open House Sign-In</title>
+<link rel="preload" as="image" href="patio.jpg">
+<link rel="stylesheet" href="../../assets/style.css">
+<script src="config.js"></script>
+</head>
+<body>
+
+<main id="signin">
+  <header class="hero">
+    <div class="hero-img"><img id="hero-img" alt="" fetchpriority="high"><span id="staged" class="staged" hidden>Virtually staged</span></div>
+    <div class="hero-text">
+      <h1 id="address"></h1>
+      <p class="area" id="area"></p>
+      <p class="price"><span id="price"></span> <span id="price-tag" class="tag"></span></p>
+      <p class="facts" id="facts"></p>
+      <p class="when" id="when"></p>
+    </div>
+  </header>
+
+  <form id="form" novalidate autocomplete="on">
+    <p class="lead-in">Sign in and get my free Vancouver Buyer's Guide</p>
+
+    <div class="row2">
+      <label class="field"><span>First name</span><input id="first" name="given-name" autocomplete="given-name" required maxlength="40"></label>
+      <label class="field"><span>Last name</span><input id="last" name="family-name" autocomplete="family-name" maxlength="40"></label>
+    </div>
+    <label class="field"><span>Phone</span><input id="phone" type="tel" name="tel" autocomplete="tel" inputmode="tel" maxlength="30"></label>
+    <label class="field"><span>Email</span><input id="email" type="email" name="email" autocomplete="email" inputmode="email" maxlength="120"></label>
+    <p class="hint">Phone or email, whichever you prefer.</p>
+
+    <fieldset class="chips" data-name="agent"><legend>Working with an agent?</legend>
+      <label><input type="radio" name="agent" value="yes"><span>Yes</span></label>
+      <label><input type="radio" name="agent" value="no"><span>No</span></label>
+      <label><input type="radio" name="agent" value="prefer not to say"><span>Prefer not to say</span></label>
+    </fieldset>
+    <label class="field" id="agent-name-wrap" hidden><span>Agent's name</span><input id="agent-name" maxlength="60"></label>
+
+    <fieldset class="chips" data-name="timeline"><legend>When are you looking to buy?</legend>
+      <label><input type="radio" name="timeline" value="looking"><span>Just looking</span></label>
+      <label><input type="radio" name="timeline" value="0-3"><span>0–3 mo</span></label>
+      <label><input type="radio" name="timeline" value="3-6"><span>3–6 mo</span></label>
+      <label><input type="radio" name="timeline" value="6+"><span>6+ mo</span></label>
+    </fieldset>
+
+    <fieldset class="chips" data-name="firstTime"><legend>First-time buyer?</legend>
+      <label><input type="radio" name="firstTime" value="yes"><span>Yes</span></label>
+      <label><input type="radio" name="firstTime" value="no"><span>No</span></label>
+    </fieldset>
+
+    <fieldset class="chips" data-name="preApproved"><legend>Pre-approved?</legend>
+      <label><input type="radio" name="preApproved" value="yes"><span>Yes</span></label>
+      <label><input type="radio" name="preApproved" value="no"><span>No</span></label>
+      <label><input type="radio" name="preApproved" value="working on it"><span>Working on it</span></label>
+    </fieldset>
+
+    <fieldset class="chips" data-name="use"><legend>Live in or investment?</legend>
+      <label><input type="radio" name="use" value="live in"><span>Live in</span></label>
+      <label><input type="radio" name="use" value="investment"><span>Investment</span></label>
+    </fieldset>
+
+    <fieldset class="chips" data-name="pet"><legend>Have a pet?</legend>
+      <label><input type="radio" name="pet" value="yes"><span>Yes</span></label>
+      <label><input type="radio" name="pet" value="no"><span>No</span></label>
+    </fieldset>
+
+    <fieldset class="chips" data-name="heard"><legend>How did you hear about it?</legend>
+      <label><input type="radio" name="heard" value="sign"><span>Sign</span></label>
+      <label><input type="radio" name="heard" value="MLS / Realtor.ca"><span>MLS / Realtor.ca</span></label>
+      <label><input type="radio" name="heard" value="Instagram"><span>Instagram</span></label>
+      <label><input type="radio" name="heard" value="neighbour"><span>Neighbour</span></label>
+      <label><input type="radio" name="heard" value="other"><span>Other</span></label>
+    </fieldset>
+
+    <!-- Honeypot: people never see this; bots fill it in. -->
+    <div class="hp" aria-hidden="true"><label>Company<input id="company" name="company" tabindex="-1" autocomplete="off"></label></div>
+
+    <label class="consent"><input type="checkbox" id="consent"><span id="consent-text"></span></label>
+
+    <p class="err" id="err" role="alert"></p>
+    <button class="btn" id="send" type="submit">Sign in &amp; get the guide</button>
+  </form>
+</main>
+
+<main id="thanks" hidden>
+  <h1 class="thanks-title" id="thanks-title" tabindex="-1"></h1>
+  <a class="btn" id="guide" target="_blank" rel="noopener">Download your Buyer's Guide</a>
+
+  <section class="card">
+    <h2>What it costs to own</h2>
+    <p class="note">Estimates only — talk to a mortgage broker</p>
+    <dl id="costs"></dl>
+  </section>
+
+  <section class="plan">
+    <h2>The floor plan</h2>
+    <a id="plan-link" target="_blank" rel="noopener"><img id="plan-img" alt="" loading="lazy" width="1600" height="1200"></a>
+    <p class="cta-heading" id="cta-heading"></p>
+    <a class="btn" id="cta"></a>
+  </section>
+  <a class="btn btn-ghost" id="sms">Text me for the strata docs</a>
+  <button class="btn btn-ghost" id="vcard" type="button">Save my contact</button>
+</main>
+
+<footer class="footer" id="footer"></footer>
+
+<script src="../../assets/app.js"></script>
+</body>
+</html>
