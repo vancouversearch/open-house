@@ -2,7 +2,7 @@
    to /oh/<new-slug>/, swap the photo and edit this object. Nothing else changes. */
 window.OH = {
   slug: '104-555-w14',
-  url: 'https://vancouverseach-debug.github.io/open-house/oh/104-555-w14/', // printed on the QR sign
+  url: 'https://vancouversearch.github.io/open-house/oh/104-555-w14/', // printed on the QR sign
 
   address: '104 – 555 W 14th Ave',
   area: 'Fairview',
