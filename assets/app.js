@@ -13,27 +13,6 @@
   const money = n => '$' + Math.round(n).toLocaleString('en-CA');
   const money2 = n => '$' + n.toLocaleString('en-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  /* ---------- Cost maths (BC / Canada rules; estimates only) ---------- */
-  function minDown(p) {
-    if (p >= 1500000) return p * 0.2;
-    return p <= 500000 ? p * 0.05 : 25000 + (p - 500000) * 0.1;
-  }
-  // Canadian fixed mortgages compound semi-annually.
-  function monthlyPayment(principal, ratePct, years) {
-    const r = Math.pow(1 + ratePct / 200, 1 / 6) - 1, n = years * 12;
-    return principal * r / (1 - Math.pow(1 + r, -n));
-  }
-  function ptt(p) {
-    return Math.min(p, 200000) * 0.01 + Math.max(0, Math.min(p, 2000000) - 200000) * 0.02
-      + Math.max(0, Math.min(p, 3000000) - 2000000) * 0.03 + Math.max(0, p - 3000000) * 0.05;
-  }
-  // First-time buyer exemption: tax on the first $500K is waived up to $835K, phasing out by $860K.
-  function pttFirstTime(p) {
-    if (p <= 835000) return Math.max(0, ptt(p) - ptt(500000));
-    if (p < 860000) return ptt(p) - ptt(500000) * (860000 - p) / 25000;
-    return null;
-  }
-
   /* ---------- Fill the page from config ---------- */
   function fill() {
     document.title = 'Open House · ' + OH.address;
@@ -51,6 +30,8 @@
 
     $('guide').href = OH.buyerGuide;
     const sms = text => `sms:${OH.host.phone}?&body=${encodeURIComponent(text)}`; // "?&" works on iPhone and Android
+    // No floor plan file yet? Hide that part instead of showing a broken image.
+    $('plan-img').onerror = () => { $('plan-link').hidden = true; const h = document.querySelector('.plan h2'); if (h) h.hidden = true; };
     $('plan-link').href = $('plan-img').src = OH.floorPlan.src;
     $('plan-img').alt = OH.floorPlan.alt;
     $('cta-heading').textContent = OH.cta.heading;
@@ -58,14 +39,16 @@
     $('cta').href = sms(OH.cta.text);
     $('sms').href = sms(OH.strataDocsText);
 
-    const c = OH.costs, p = OH.price, down = p * c.downPct / 100;
+    // Only figures straight from the listing. No mortgage or other estimates.
+    const c = OH.costs;
+    const card = document.querySelector('.card');
+    if (card) {
+      card.querySelector('h2').textContent = 'Monthly strata & taxes';
+      card.querySelector('.note').textContent = 'From the listing. Ask me about mortgage numbers.';
+    }
     const rows = [
-      ['Price', money(p)],
-      ['Minimum down payment', '~' + money(minDown(p)), '5% of first $500K + 10% of the rest'],
-      [`With ${c.downPct}% down (${money(down)})`, `~${money(monthlyPayment(p - down, c.rate, c.years))}/mo`, `${c.rate}%, ${c.years}-yr, an assumption`],
       ['Strata fee', money2(c.strata) + '/mo', c.strataNote],
-      ['Property tax', `~${money(c.taxMonthly)}/mo`],
-      ['Property transfer tax', money(ptt(p)), pttFirstTime(p) !== null ? `or ~${money(pttFirstTime(p))} for qualifying first-time buyers` : '']
+      ['Property tax', `${money(c.taxMonthly)}/mo`, c.taxYearly ? `${money2(c.taxYearly)} a year` : '']
     ];
     $('costs').innerHTML = '';
     rows.forEach(([label, value, sub]) => {
