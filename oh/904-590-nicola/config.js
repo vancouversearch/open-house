@@ -31,5 +31,6 @@ window.OH = {
   costs: { strata: 752.27, strataNote: 'includes gas, hot water, garbage & gardening', taxMonthly: 290, taxYearly: 3485.04 },
 
   strataDocsText: 'Hi Chris, please send the strata docs for 904-590 Nicola St',
-  buyerGuide: '../../assets/buyer-guide.pdf'
+  buyerGuide: '../../assets/buyer-guide.pdf',
+  featureSheet: 'feature-sheet.pdf' // '' to hide the button
 };

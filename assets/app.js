@@ -29,6 +29,8 @@
     $('footer').textContent = `Listed by ${OH.listing.agent}, ${OH.listing.brokerage} · Hosted by ${OH.host.name}, ${OH.host.brokerage}`;
 
     $('guide').href = OH.buyerGuide;
+    // Optional feature sheet (PDF in the listing folder). Older pages without the button just skip this.
+    if ($('feature') && OH.featureSheet) { $('feature').href = OH.featureSheet; $('feature').hidden = false; }
     const sms = text => `sms:${OH.host.phone}?&body=${encodeURIComponent(text)}`; // "?&" works on iPhone and Android
     // No floor plan file yet? Hide that part instead of showing a broken image.
     $('plan-img').onerror = () => { $('plan-link').hidden = true; const h = document.querySelector('.plan h2'); if (h) h.hidden = true; };
