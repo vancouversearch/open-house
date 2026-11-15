@@ -3,12 +3,12 @@
 Static site for GitHub Pages. Each open house is a folder under `oh/`.
 
 - `oh/<slug>/index.html` is the sign-in page and thank-you screen
-- `oh/<slug>/sign.html` is the printable QR sign (letter size, black and white)
+- `oh/<slug>/sign.html` is the printable QR door sign (letter size, cream layout with logos from `assets/logos/`)
 - `oh/<slug>/config.js` holds everything about the property
 - `assets/` holds the shared script, styles and `buyer-guide.pdf`. Add `headshot.jpg` here to put a photo in the vCard.
 
 ## Next open house
-Copy `oh/904-590-nicola/` (the short sign-in form) to `oh/<new-slug>/`, replace the photo, and edit `config.js`. If a photo is virtually staged, set `staged: true` on it.
+Copy the newest listing folder (now `oh/40-2375-w-broadway/`) to `oh/<new-slug>/`, replace the photo and floor plan, and edit `config.js`. If a photo is virtually staged, set `staged: true` on it. The full checklist is in `CLAUDE.md`.
 
 ## Where sign-ins go
 Each sign-in inserts one row into the Supabase table `ros_inbox` with `source = 'open-house'`. The open-house answers go in the `details` jsonb column. Realtor OS turns the row into a buyer lead (source "Open House") on its next sync, then deletes the row. Visitors can only insert; they can't read, change or delete anything.

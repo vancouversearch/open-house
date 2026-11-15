@@ -17,6 +17,8 @@ window.OH = {
   facts: ['2 bed · 2 bath', '1,136 sq ft', 'Private rooftop deck', '2 parking + locker'],
 
   openHouse: 'Sun, Nov 15, 2–4pm',
+  // Printed door sign (sign.html). Price is added from `price` above.
+  sign: { stats: ['2 bed', '2 bath', '1,136 sq ft'], features: 'Floor plan · Strata fee & taxes · Strata documents' },
   floorPlan: { src: 'floorplan.jpg', alt: 'Floor plan: 2 bed, 2 bath townhouse, 1,136 sq ft over three levels plus a rooftop deck' },
   cta: { heading: 'Picture yourself here?', button: 'Book a private showing', text: "Hi Chris, I'd like to book a private showing of 40-2375 W Broadway" },
 
