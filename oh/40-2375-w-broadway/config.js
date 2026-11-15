@@ -34,5 +34,5 @@ window.OH = {
 
   strataDocsText: 'Hi Chris, please send the strata docs for 40-2375 W Broadway',
   buyerGuide: '../../assets/buyer-guide.pdf',
-  featureSheet: '' // add 'feature-sheet.pdf' once you have the public MLS sheet
+  featureSheet: 'feature-sheet.pdf' // public MLS sheet (REA Full Public) only; '' to hide the button
 };
