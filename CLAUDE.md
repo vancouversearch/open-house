@@ -44,7 +44,7 @@ He'll give you an MLS listing PDF, photos, and the day and time. Then:
 - **Cost card = strata fee and property tax only**, straight from the listing. No mortgage, down
   payment or monthly-payment estimates, on the page or the sign.
 - **Don't promise what isn't there.** If there's no floor plan, don't list "Floor plan" on the sign.
-- **Keep the sign-in form short**: name, phone/email, "Working with an agent?", consent. Don't add questions back.
+- **Keep the sign-in form short**: name, phone/email, "Already have a buyer's agent?", consent. Don't add questions back.
 - **Don't change `assets/app.js` or `assets/style.css`** for a single listing; they're shared by every page.
 - **Don't rewrite history** on `main` (no force-push, no amending pushed commits). It's the live site.
 - Host details for every config: Chris Zenone, Oakwyn Realty, 778-883-1594, chriszenone@outlook.com.
