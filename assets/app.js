@@ -170,6 +170,8 @@
     $('signin').hidden = true;
     $('thanks').hidden = false;
     $('thanks-title').textContent = `Thanks, ${first}!`;
+    const sms = text => `sms:${OH.host.phone}?&body=${encodeURIComponent(text)}`;
+    $('sms').href = sms(OH.strataDocsText + ` — ${first}`);
     window.scrollTo(0, 0);
     $('thanks-title').focus({ preventScroll: true });
   }
