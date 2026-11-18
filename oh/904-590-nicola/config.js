@@ -16,7 +16,7 @@ window.OH = {
   ],
   facts: ['1 bed + den', '821 sq ft', 'Mountain & inlet views', 'Parking + locker'],
 
-  openHouse: 'Sat, Nov 21, 2–4pm',
+  openHouse: 'Sat, Nov 22, 2–4pm',
   // Printed door sign (sign.html). Price is added from `price` above.
   sign: { stats: ['1 bed + den', '821 sq ft'], features: 'Strata fee & taxes · Strata documents' },
   floorPlan: { src: 'floorplan.jpg', alt: 'Floor plan: 1 bed plus den, 1 bath, 821 sq ft' },
