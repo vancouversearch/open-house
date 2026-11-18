@@ -8,8 +8,8 @@ window.OH = {
   area: 'Coal Harbour',
   boardArea: 'Vancouver West',          // Realtor OS area for the lead (a GVR sub-area name)
   leadProperty: '904-590 Nicola St',    // tag saved with every lead
-  price: 1075000,
-  priceTag: 'Just listed',              // '' to hide
+  price: 1048000,
+  priceTag: 'Reduced',                  // '' to hide
   photos: [
     // staged: true adds a "Virtually staged" label on the photo
     { src: 'photo.jpg', alt: 'View from the balcony over the Coal Harbour marina to the North Shore mountains', staged: false }
